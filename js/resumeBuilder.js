@@ -1,13 +1,22 @@
 
+/* jshint undef: true, unused: true */
+/* globals HTMLemail, HTMLheaderName, googleMap, $,
+ HTMLheaderRole, HTMLmobile, HTMLgithub,  HTMLtwitter, HTMLlocation,
+ HTMLbioPic, HTMLwelcomeMsg, HTMLskillsStart, HTMLskills, HTMLschoolName,
+ HTMLschoolDegree, HTMLschoolLocation, HTMLschoolDates, HTMLschoolMajor,
+ HTMLschoolStart, HTMLonlineClasses, HTMLonlineTitle, HTMLonlineSchool
+ ,HTMLonlineDates, HTMLonlineURL, HTMLworkEmployer, HTMLworkTitle, HTMLworkLocation
+ ,HTMLworkDates,HTMLworkDescription, HTMLworkStart */
+
 $("#mapDiv").append(googleMap);
 var bio = {
     name : "Uzma Syed",
     role : "Software Engineer",
-    contacts : contacts = {mobile: "0426247188",
-                           email: "uzmasyed00@gmail.com",
-                           github: "uzmasyed00",
-                           twitter: "uzmasyed00",
-                           location: "Sydney, Australia"},
+    contacts : {mobile: "04262471988",
+        email: "uzmasyed00@gmail.com",
+        github: "uzmasyed00",
+        twitter: "uzmasyed00",
+        location: "Sydney, Australia"},
     welcomeMessage: "Welcome",
     skills: ["Front-end-Development","Back-end-Development","Databases"],
     biopic:"./images/fry.jpg",
@@ -41,12 +50,11 @@ var bio = {
         $("#header").append(HTMLskillsStart);
 
         var appendedSkills = bio.skills[0] + "<br>";
-        for(i=1; i<bio.skills.length; i++){
+        for(var i=1; i<bio.skills.length; i++){
             appendedSkills+= bio.skills[i] + "<br>" ;
-
         }
 
-       var candidateSkills =  HTMLskills.replace("%data%", appendedSkills);
+        var candidateSkills =  HTMLskills.replace("%data%", appendedSkills);
         $("#header").append(candidateSkills);
 
     }
@@ -55,19 +63,19 @@ var bio = {
 var education = {
     schools: [
         {
-        name: "University of Waterloo",
-        location: "Waterloo, Canada",
-        degree : "BSc, Electrical and Computer Engineering",
-        majors:["Management Sciences"],
-        dates: "2007-2012"
-    },
+            name: "University of Waterloo",
+            location: "Waterloo, Canada",
+            degree : "BSc, Electrical and Computer Engineering",
+            majors:["Management Sciences"],
+            dates: "2007-2012"
+        },
         {
             name: "TAFE",
-            location: "Dubai, United Arab Emirates",
+            location: "Melbourne, Australia",
             degree : "Diploma of Software Development",
             majors: ["Web Development"],
             dates: "2014-2015"
-    }
+        }
     ],
 
     onlineClasses : [
@@ -81,7 +89,7 @@ var education = {
     ],
 
     display : function() {
-        for( i = 0; i<education.schools.length ; i++)
+        for( var i = 0; i<education.schools.length ; i++)
         {
             //var appendedEducation = $("#education").append(HTMLschoolStart);
             var formattedSchool = HTMLschoolName.replace("%data%", education.schools[i].name);
@@ -91,14 +99,12 @@ var education = {
             var formattedMajors = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(formattedSchool + formattedDegree);
-            $(".education-entry:last").append(formattedDates) ;
-            $(".education-entry:last").append(formattedMajors) ;
-            $(".education-entry:last").append(formattedLocation)+ "<br>" ;
-
-
+            $(".education-entry:last").append(formattedDates);
+            $(".education-entry:last").append(formattedMajors);
+            $(".education-entry:last").append(formattedLocation + "<br>");
         }
         $(".education-entry:last").append(HTMLonlineClasses);
-        for(i=0; i<education.onlineClasses.length; i++){
+        for( i = 0; i<education.onlineClasses.length; i++){
 
             $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineClasses[i].name)+
                 HTMLonlineSchool.replace("%data%", education.onlineClasses[i].school));
@@ -106,13 +112,8 @@ var education = {
             $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineClasses[i].date));
             //$(".education-entry:last").append(HTMLonlineSchool.replace("%data%", education.onlineClasses[i].school));
             $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineClasses[i].url));
-
-
         }
-
     }
-
-
 };
 
 var work = {
@@ -137,7 +138,7 @@ var work = {
 
 
     display: function(){
-        for (i=0; i< work.jobs.length; i++) {
+        for (var i = 0; i< work.jobs.length; i++) {
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
             var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
             var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
@@ -154,19 +155,19 @@ var work = {
 
 var projects = {
     projects:[
-    {
-        title:"Class D Audio Amplifier",
-        dates:"Mar 2012 - June 2012",
-        description:"An efficient amplifier that amplifies audio signals",
-        images:"./images/amplifier.jpeg"
-    },
+        {
+            title:"Class D Audio Amplifier",
+            dates:"Mar 2012 - June 2012",
+            description:"An efficient amplifier that amplifies audio signals",
+            images:"./images/amplifier.jpeg"
+        },
 
-    {
-        title:"Item Catalog",
-        dates:"Mar 2015 - June 2015",
-        description:"A web application",
-        images:"./images/itemCatalog.jpeg"
-    }
+        {
+            title:"Item Catalog",
+            dates:"Mar 2015 - June 2015",
+            description:"A web application",
+            images:"./images/itemCatalog.jpeg"
+        }
     ],
 
     display : function(){
@@ -178,7 +179,7 @@ var projects = {
         var HTMLprojectImage = '<img src="%data%">';
 
 
-        for (i=0; i< projects.projects.length; i++) {
+        for (var i = 0; i< projects.projects.length; i++) {
             var formattedProjectTile = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
             var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
