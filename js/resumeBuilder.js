@@ -67,20 +67,22 @@ var education = {
             location: "Waterloo, Canada",
             degree : "BSc, Electrical and Computer Engineering",
             majors:["Management Sciences"],
-            dates: "2007-2012"
+            dates: "2007-2012",
+            url:"https://uwaterloo.ca/"
         },
         {
             name: "TAFE",
             location: "Melbourne, Australia",
             degree : "Diploma of Software Development",
             majors: ["Web Development"],
-            dates: "2014-2015"
+            dates: "2014-2015",
+            url:"http://www.tafecourses.com.au/?gclid=CLSvj77l280CFQGbvAod4VQK7Q"
         }
     ],
 
-    onlineClasses : [
+    onlineCourses : [
         {
-            name:"Full Stack Developer Nanodegree",
+            title:"Full Stack Developer Nanodegree",
             date:"Feb 2015 - Nov 2015",
             school:"Udacity",
             url:"https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004"
@@ -104,14 +106,16 @@ var education = {
             $(".education-entry:last").append(formattedLocation + "<br>");
         }
         $(".education-entry:last").append(HTMLonlineClasses);
-        for( i = 0; i<education.onlineClasses.length; i++){
+        //$("#education").append(HTMLonlineClasses);
+        //$("#education").append(HTMLschoolStart);
+        for( i = 0; i<education.onlineCourses.length; i++){
 
-            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineClasses[i].name)+
-                HTMLonlineSchool.replace("%data%", education.onlineClasses[i].school));
+            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title)+
+                HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school));
 
-            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineClasses[i].date));
+            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[i].date));
             //$(".education-entry:last").append(HTMLonlineSchool.replace("%data%", education.onlineClasses[i].school));
-            $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineClasses[i].url));
+            $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[i].url));
         }
     }
 };
@@ -159,14 +163,14 @@ var projects = {
             title:"Class D Audio Amplifier",
             dates:"Mar 2012 - June 2012",
             description:"An efficient amplifier that amplifies audio signals",
-            images:"./images/amplifier.jpeg"
+            images: ["./images/amplifier.jpeg"]
         },
 
         {
             title:"Item Catalog",
             dates:"Mar 2015 - June 2015",
             description:"A web application",
-            images:"./images/itemCatalog.jpeg"
+            images: ["./images/itemCatalog.jpeg"]
         }
     ],
 
@@ -178,15 +182,21 @@ var projects = {
         var HTMLprojectDescription = '<p><br>%data%</p>';
         var HTMLprojectImage = '<img src="%data%">';
 
-
+        //var j=0;
+        var firstProjectImage = HTMLprojectDescription.replace("%data%", projects.projects[0].images);
         for (var i = 0; i< projects.projects.length; i++) {
             var formattedProjectTile = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
             var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
-            var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images);
+            var formattedProjectImage;
+            var ImagesForEachProject;
+
+                for (j = 0; j < projects.projects[i].images.length; j++) {
+                    ImagesForEachProject = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
+                }
 
             $("#projects").append(HTMLprojectStart);
-            $(".project-entry:last").append(formattedProjectTile + formattedProjectDates + formattedProjectDescription + formattedProjectImage
+            $(".project-entry:last").append(formattedProjectTile + formattedProjectDates + formattedProjectDescription + ImagesForEachProject
             );
 
         }
