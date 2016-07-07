@@ -23,24 +23,31 @@ var bio = {
     display: function (){
         var candidateName = HTMLheaderName.replace("%data%", bio.name);
         $("#header").append(candidateName);
-        var candidateRole = HTMLheaderRole.replace("%data%", bio.role);
 
+
+        var candidateRole = HTMLheaderRole.replace("%data%", bio.role);
         $("#header").append(candidateRole);
 
         var candidateMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
         $("#header").append(candidateMobile);
+        $("#footerContacts").append(candidateMobile);
 
         var candidateEmail = HTMLemail.replace("%data%", bio.contacts.email);
         $("#header").append(candidateEmail);
+        $("#footerContacts").append(candidateEmail);
+
 
         var candidateGithub = HTMLgithub.replace("%data%", bio.contacts.github);
         $("#header").append(candidateGithub);
+        $("#footerContacts").append(candidateGithub);
 
         var candidateTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
         $("#header").append(candidateTwitter);
+        $("#footerContacts").append(candidateTwitter);
 
         var candidateLocation = HTMLlocation.replace("%data%", bio.contacts.location + "<br>");
         $("#header").append(candidateLocation);
+        $("#footerContacts").append(candidateLocation);
 
         var candidatePic = HTMLbioPic.replace("%data%", bio.biopic);
         $("#header").append(candidatePic);
